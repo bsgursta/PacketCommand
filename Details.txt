@@ -1,0 +1,4 @@
+arm-none-eabi-gcc main.c startup_stm32f7xx.s -T linker_script.ld \
+  -o blink.elf \
+  -mcpu=cortex-m7 -mthumb \
+  -nostdlib -ffreestanding -Wl,--gc-sections -Wl,-Map=blink.map
