@@ -1,4 +1,3 @@
-arm-none-eabi-gcc main.c startup_stm32f7xx.s -T linker_script.ld \
-  -o blink.elf \
-  -mcpu=cortex-m7 -mthumb \
-  -nostdlib -ffreestanding -Wl,--gc-sections -Wl,-Map=blink.map
+arm-none-eabi-gcc main.c startup_stm32f767zitx.s -T STM32F767ZITX_FLASH.ld -o blink.elf -mcpu=cortex-m7 -mthumb -ffreestanding -nostdlib -nostartfiles --specs=nosys.specs
+
+openocd -f interface/stlink.cfg -f target/stm32f7x.cfg -c "program blink.elf verify reset exit"
